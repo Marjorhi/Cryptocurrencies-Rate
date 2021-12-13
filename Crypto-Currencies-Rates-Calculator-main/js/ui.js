@@ -11,16 +11,15 @@ class UI {
                 // console.log(data.cryptoCurrencies.data);
     
                 const cryptoCurrencies = data.cryptoCurrencies.data;
-                // BUild the <select from the REST API
+                // BUild the select from the REST API
                 const select = document.getElementById('cryptocurrency')
     
                 cryptoCurrencies.forEach(currency => {
-                    // Add the <option>
+                    // Add the option
                     const option = document.createElement('option');
     
                     option.value = currency.id;
                     option.appendChild(document.createTextNode(currency.name));
-    
                     select.appendChild(option)
                 });
             });
