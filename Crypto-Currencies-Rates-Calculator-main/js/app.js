@@ -13,28 +13,22 @@ form.addEventListener('submit', (e)=> {
     // Read Currency
     const currencySelect = document.getElementById('currency').value;
 
+
     // Red CryptoCurrency
     const cryptoCurrencySelect = document.getElementById('cryptocurrency').value;
+
     
     // Validate select has something
     if(currencySelect === '' || cryptoCurrencySelect === '') {
         // display an error
         ui.printMessage('All the fields are mandatory', 'deep-orange darken-4 card-panel');
     } else {
+
         // Query the REST API
-        cryptoAPI.queryAPI(currencySelect, cryptoCurrencySelect)
-            .then(data => {
+        cryptoAPI.queryAPI(currencySelect, cryptoCurrencySelect).then(data => {
+            console.log(data.conversion);
 
-                if(currencySelect === 'USD'){
-                    ui.displayResult(data.result.data, data.result.data.quote.USD,  currencySelect);
-                }else if(currencySelect === 'GBP'){
-                    ui.displayResult( data.result.data, data.result.data.quote.GBP, currencySelect);
-                }else if(currencySelect === 'EUR'){
-                    ui.displayResult( data.result.data, data.result.data.quote.EUR, currencySelect);
-                }else if(currencySelect === 'PHP'){
-                    ui.displayResult( data.result.data, data.result.data.quote.PHP, currencySelect);
-                }
-
+            ui.displayResult(data.conversion.data, currencySelect);
         });
     }
 })
