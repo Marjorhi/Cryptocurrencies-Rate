@@ -9,7 +9,12 @@ class cryptoAPI {
 
 
     //Get all the cryptocurrencies
-    getCryptoCurrenciesList() {
+    async getCryptoCurrenciesList() {
+        const url = await fetch(`${apiURL}cryptocurrency/map?limit=99&${apiKey}`);
+        const cryptoCurrencies = await url.json();
 
+        return {
+            cryptoCurrencies
+        }
     }
 }
